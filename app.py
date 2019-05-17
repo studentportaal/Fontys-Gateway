@@ -2,6 +2,7 @@ from flask import Flask
 from flask import request
 from flask_cors import CORS, cross_origin
 
+import os
 import user
 import storage
 import requests
@@ -33,7 +34,7 @@ def message():
 def login():
     # requests the access token from the identity server
     auth_code = request.args.get('authorization')
-    data = {'client_secret': 'Ohi65lAzsj07KiAJ0G6HsJq7YdnBYRVDoa11RNxK', 'client_id': 'i354549-jobbybyomm',
+    data = {'client_secret': os.environ['CLIENTSECRET'], 'client_id': 'i354549-jobbybyomm',
             'grant_type': 'authorization_code', 'code': auth_code, 'redirect_uri': 'https://vaifreecams.com'}
     r = requests.post('https://identity.fhict.nl/connect/token', data)
     response = r.json()
