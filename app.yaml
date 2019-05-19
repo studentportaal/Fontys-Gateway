@@ -1,6 +1,5 @@
 service: fontys-auth
 runtime: python
-env: flex
 
 runtime_config:
   python_version: 3
