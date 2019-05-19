@@ -1,10 +1,20 @@
-language:
-  python
+language: python
 python:
-  - "3.6"
-
+- '3.6'
 install:
-  - pip install -r requirements.txt
-
+- pip install -r requirements.txt
 script:
-  - python test.py
+- python test.py
+
+before_deploy:
+  - openssl aes-256-cbc -K $encrypted_ebb404c67cff_key -iv $encrypted_ebb404c67cff_iv
+    -in service-account.json.enc -out service-account.json
+    -d
+
+deploy:
+  provider: gae
+  keyfile: service-account.json
+  project: pts6-bijbaan
+notifications:
+  slack: git-gud-workspace:PBskFZT377Zuxh4qI5gpGgoD
+
