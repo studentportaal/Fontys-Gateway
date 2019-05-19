@@ -1,3 +1,4 @@
+service: fontys-auth
 runtime: python
 env: flex
 
