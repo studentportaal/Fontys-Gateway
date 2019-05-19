@@ -47,7 +47,8 @@ def login():
 
     # requests information about this user from the Jobby server
     head = {'Content-Type': 'application/json'}
-    profile = requests.post('http://localhost:9000/users/{}/profile'.format(person['mail']), data=payload, headers=head)
+    profile = requests.post(os.environ['API_BASE'] + 'users/{}/profile'.format(person['mail']), data=payload,
+                            headers=head)
     print(profile.status_code)
 
     if profile.status_code == 200:
