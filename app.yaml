@@ -1,7 +1,6 @@
 service: fontys-auth
 runtime: python37
 api_version: 1
-threadsafe: true
 
 instance_class: F1
 manual_scaling:
