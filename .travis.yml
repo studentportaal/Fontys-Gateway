@@ -8,10 +8,8 @@ script:
 
 before_deploy:
   - openssl aes-256-cbc -K $encrypted_ebb404c67cff_key -iv $encrypted_ebb404c67cff_iv
-    -in service-account.json.enc -out service-account.json
+    -in secrets.tar.enc -out secrets.tar
     -d
-  - openssl aes-256-cbc -K $encrypted_ebb404c67cff_key -iv $encrypted_ebb404c67cff_iv
-    -in CLIENTSECRET.JSON.enc -out CLIENTSECRET.JSON -d
 
 deploy:
   provider: gae
