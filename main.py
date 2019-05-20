@@ -34,10 +34,13 @@ def message():
 def login():
     # requests the access token from the identity server
     auth_code = request.args.get('authorization')
-    data = {'client_secret': os.environ['CLIENTSECRET'], 'client_id': 'i354549-jobbybyomm',
+
+    with open(os.environ['CLIENTSECRET'], 'r') as f:
+        datastore = json.load(f)
+
+    data = {'client_secret': datastore['CLIENTSECRET'], 'client_id': 'i354549-jobbybyomm',
             'grant_type': 'authorization_code', 'code': auth_code, 'redirect_uri': 'https://vaifreecams.com'}
     r = requests.post('https://identity.fhict.nl/connect/token', data)
-    print(os.environ['CLIENTSECRET'])
     response = r.json()
 
     # requests the information of the authenticated user
