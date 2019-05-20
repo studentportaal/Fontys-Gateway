@@ -10,6 +10,7 @@ before_deploy:
   - openssl aes-256-cbc -K $encrypted_ebb404c67cff_key -iv $encrypted_ebb404c67cff_iv
     -in secrets.tar.enc -out secrets.tar
     -d
+  - tar xvf secrets.tar
 
 deploy:
   provider: gae
