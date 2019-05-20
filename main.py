@@ -37,7 +37,9 @@ def login():
     data = {'client_secret': os.environ['CLIENTSECRET'], 'client_id': 'i354549-jobbybyomm',
             'grant_type': 'authorization_code', 'code': auth_code, 'redirect_uri': 'https://vaifreecams.com'}
     r = requests.post('https://identity.fhict.nl/connect/token', data)
+    print(r)
     response = r.json()
+    print(response)
 
     # requests the information of the authenticated user
     header = {'Authorization': 'Bearer ' + response['access_token']}
